@@ -22,11 +22,26 @@ const vincitore = document.getElementById("winner");
 
 /* creiamo un prompt per far scegliere all'utente pari o dispari */
 
-const scelta = prompt("Scegli pari o dispari");
+let scelta = prompt("Scegli pari o dispari");
 
 console.log(scelta);
 
-pardisp.innerHTML = `Hai scelto: ${scelta}`;
+checkChoice();
+
+function checkChoice() {
+    if (scelta === 'pari' || scelta === 'dispari') {
+
+        pardisp.innerHTML = `Hai scelto: ${scelta}`;
+
+    } else {
+
+        scelta = prompt("Devi scegliere solo tra pari o dispari");
+        
+        checkChoice();
+
+    }
+}
+
 
 /* creiamo un prompt per far scegliere un numero da 1 a 5 all'utente */
 
@@ -34,7 +49,23 @@ let numeroUtente = parseInt(prompt("Scegli un numero da 1 a 5"));
 
 console.log(numeroUtente);
 
-playerNum.innerHTML = `Hai scelto il numero: ${numeroUtente}`;
+checkNumber();
+
+function checkNumber() {
+    if (numeroUtente > 0 && numeroUtente < 6) {
+    
+        playerNum.innerHTML = `Hai scelto il numero: ${numeroUtente}`;
+    
+    } else {
+
+        numeroUtente = parseInt(prompt("Devi scegliere solo tra 1 e 5!"));
+
+        checkNumber();
+    }
+
+}
+
+
 
 /* generiamo tramite una funzione il numero scelto dal compuetr (sempre da 1 a 5) */
 
